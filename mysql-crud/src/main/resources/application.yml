@@ -1,0 +1,36 @@
+quarkus:
+  http:
+    port: 8080
+    cors:
+      ~: true
+      origins:
+        - "*"
+      methods:
+        - "*"
+
+  datasource:
+    db-kind: mysql
+    username: root
+    password: root
+    jdbc:
+      url: "jdbc:mysql://127.0.0.1:3306/mumbai_uni_main?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
+
+  hibernate-orm:
+    database:
+      generation: update
+    log:
+      sql: true
+    dialect: org.hibernate.dialect.MySQLDialect
+
+  log:
+    level: INFO
+    category:
+      "org.hibernate":
+        level: ERROR
+    file:
+      enable: true
+      path: ./logs/mysql-crud.log
+      level: INFO
+      rotation:
+        file-suffix: .yyyy-MM-dd
+        max-file-size: "100M"
